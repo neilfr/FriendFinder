@@ -4,19 +4,42 @@
         <title>Survey</title>
         <link rel="stylesheet" type="text/css" href="/css/reset.css">
         <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
     </head>
     <body>
         Survey
-        <form method='post' action='/somethingelse'>
-            <input type='text' name='name'>
-            <select name='q1'>
+<!--        <form method='post' action='/api/friends'> -->
+            <input id='name' type='text' name='name'>
+            <select id='q1' name='q1'>
                 <option value = '1'>1 - Strongly Agree</option>
                 <option value = '2'>2</option>
                 <option value = '3'>3</option>
                 <option value = '4'>4</option>
                 <option value = '5'>5 - Strongly Agree</option>
             </select>
-            <input type='submit'>
-        </form>
+            <select id='q2' name='q2'>
+                    <option value = '1'>1 - Strongly Agree</option>
+                    <option value = '2'>2</option>
+                    <option value = '3'>3</option>
+                    <option value = '4'>4</option>
+                    <option value = '5'>5 - Strongly Agree</option>
+                </select>
+            <button id='submitBtn'>Submit</button>
+<!--        </form> -->
     </body>
+    <script type="text/javascript">
+        $("#submitBtn").on("click",function(){
+            var name = $("#name").val().trim();
+            var answer1 = $("#q1").val().trim();
+            var answer2 = $("#q2").val().trim();
+            console.log("name is: "+name);
+            var data = {
+                "name":name,
+                "answers":[answer1,answer2]
+            }
+            $.post("/api/friends",data,function(){
+                console.log("submitted!"); // this never gets logged?
+            });
+        });
+    </script>
 </html>

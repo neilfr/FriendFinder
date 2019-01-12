@@ -1,5 +1,6 @@
 var path = require('path');
 var appPath = path.join(__dirname, '..');
+
 module.exports = function(app){
     app.get("/", function(req,res){
         //res.send("Welcome to Friend Finder!");
@@ -18,12 +19,5 @@ module.exports = function(app){
         console.log("Survey!");
         res.sendFile(path.join(appPath,'/public','survey.html'));
     });
-
-    //below should be in the apiRoutes.js file
-    /*
-    app.post("/somethingelse", function(req,res){
-        console.log("POST!");  
-    });
-    */
 }
 
