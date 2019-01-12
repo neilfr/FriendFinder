@@ -13,6 +13,17 @@ module.exports = function(app){
         console.log(filename);
         res.sendFile(path.join(appPath,'/public/css',filename));
     });
- 
+
+    app.get("/survey",function(req,res){
+        console.log("Survey!");
+        res.sendFile(path.join(appPath,'/public','survey.html'));
+    });
+
+    //below should be in the apiRoutes.js file
+    /*
+    app.post("/somethingelse", function(req,res){
+        console.log("POST!");  
+    });
+    */
 }
 
