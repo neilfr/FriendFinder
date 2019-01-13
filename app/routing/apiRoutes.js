@@ -65,10 +65,12 @@ module.exports = function(app){
                 console.log("Friend: "+friends[i].name);
                 console.log("Difference is: "+diff);
             }
-            console.log("Best friend index is: "+bestFriend);
-            console.log("best friend is: "+friends[bestFriend].name);
         }
-
+        displayBestFriend(bestFriend);
     }
 
+    function displayBestFriend(bestFriend){
+        console.log("Best friend index is: "+bestFriend);
+        console.log("best friend is: "+friends[bestFriend].name);
+    }
 }
