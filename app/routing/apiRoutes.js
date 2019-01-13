@@ -1,8 +1,7 @@
 var path = require('path');
 var express = require("express");
 
-//how do i receive q1 and q2 as an array??
-var customers =[
+var friends =[
     {
         "name":"me",
         "answers":["5","2"]
@@ -18,12 +17,16 @@ module.exports = function(app){
 
     app.post("/api/friends", function(req,res){
         console.log("POST!");
-        customers.push(req.body);
-        for(var i=0;i<customers.length;i++){
-            console.log("customer["+i+"] is:");
-            console.log(customers[i]);
+        friends.push(req.body);
+        for(var i=0;i<friends.length;i++){
+            console.log("friends["+i+"] is:");
+            console.log(friends[i]);
         }
         return true;
+    });
+
+    app.get("/api/friends",function(req,res){
+        return res.json(friends);
     });
 
 }

@@ -15,6 +15,13 @@ module.exports = function(app){
         res.sendFile(path.join(appPath,'/public/css',filename));
     });
 
+    app.get("/scripts/:filename",function(req,res){
+        console.log("JS!");
+        var filename=req.params.filename;
+        console.log(filename);
+        res.sendFile(path.join(appPath,'public/scripts',filename));
+    })
+
     app.get("/survey",function(req,res){
         console.log("Survey!");
         res.sendFile(path.join(appPath,'/public','survey.html'));
