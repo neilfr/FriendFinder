@@ -14,12 +14,14 @@ var html="";
 for (var i=0;i<questions.length;i++){
     var surveyQuestionDiv=$("<div>");
     $(surveyQuestionDiv).html(questions[i]);
+    $(surveyQuestionDiv).addClass("surveyQuestion")
     $('#surveyContainer').append(surveyQuestionDiv);
 
     var surveyAnswerOptionsDiv=$('<div>');
     html= "<select id='q"+i+"' name='q"+i+"'>"
     + surveyAnswerOptions+
     "</select>";
+    $(surveyAnswerOptionsDiv).addClass("surveyAnswerOptions")
     $(surveyAnswerOptionsDiv).html(html);
     $('#surveyContainer').append(surveyAnswerOptionsDiv);
 }
