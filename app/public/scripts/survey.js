@@ -14,7 +14,7 @@ var html="";
 for (var i=0;i<questions.length;i++){
     var surveyQuestionDiv=$("<div>");
     $(surveyQuestionDiv).html(questions[i]);
-    $(surveyQuestionDiv).addClass("surveyQuestion")
+    $(surveyQuestionDiv).addClass("surveyQuestion");
     $('#surveyContainer').append(surveyQuestionDiv);
 
     var surveyAnswerOptionsDiv=$('<div>');
@@ -26,16 +26,20 @@ for (var i=0;i<questions.length;i++){
     $('#surveyContainer').append(surveyAnswerOptionsDiv);
 }
 
-
-
 $("#submitBtn").on("click",function(){
     var name = $("#name").val().trim();
-    var answer1 = $("#q1").val().trim();
-    var answer2 = $("#q2").val().trim();
-    console.log("name is: "+name);
+    var answerList=[];
+    for(var i=0;i<questions.length;i++){
+        var questionNumber="#q"+i;
+        console.log(questionNumber);
+        var answer=$(questionNumber).val().trim();
+        answerList.push(answer);
+        console.log(answer);
+    }
+    console.log(answerList);
     var data = {
         "name":name,
-        "answers":[answer1,answer2]
+        "answers":answerList
     }
     $.post("/api/friends",data,function(){
         console.log("submitted!"); // this never gets logged?
