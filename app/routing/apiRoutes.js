@@ -3,29 +3,20 @@ var express = require("express");
 var fs = require('fs');
 var appPath = path.join(__dirname, '..');
 
+var friends = [];
 
-
-
-/*
-fs.readFile('../data/friends.js',function(err,data){
-    console.log("reading file data");
-    console.log(data);
-});
-*/
-
-var friends =[
-    {
-        "name":"Joe Average",
-        "answers":["3","3","3","3","3"]
-    },{
-        "name":"Heidi High",
-        "answers":["5","5","5","5","5"]
-    },{
-        "name":"Lois Low",
-        "answers":["1","1","1","1","1"]
+fs.readFile(path.join(appPath, '/data','friends.js'), "utf8", function(error, data) {
+    if (error) {
+      return console.log(error);
+    } 
+    
+    if(data){
+        friends = JSON.parse(data);
     }
-];
-
+    // We will then re-display the content as an array for later use.
+    console.log("resulting array from file");
+    console.log(friends);
+  });
 
 module.exports = function(app){
     // Sets up the Express app to handle data parsing
