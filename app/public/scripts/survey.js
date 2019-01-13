@@ -1,6 +1,8 @@
 var questions = [
     "you love chicken?",
-    "you love pork?"
+    "you love pork?",
+    "you love beef?",
+    "you love scuba?"
 ];
 
 var surveyAnswerOptions = 

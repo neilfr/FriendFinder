@@ -1,10 +1,28 @@
 var path = require('path');
 var express = require("express");
+var fs = require('fs');
+var appPath = path.join(__dirname, '..');
+
+
+
+
+/*
+fs.readFile('../data/friends.js',function(err,data){
+    console.log("reading file data");
+    console.log(data);
+});
+*/
 
 var friends =[
     {
-        "name":"me",
-        "answers":["5","2"]
+        "name":"Joe Average",
+        "answers":["3","3","3","3","3"]
+    },{
+        "name":"Heidi High",
+        "answers":["5","5","5","5","5"]
+    },{
+        "name":"Lois Low",
+        "answers":["1","1","1","1","1"]
     }
 ];
 
@@ -22,6 +40,12 @@ module.exports = function(app){
             console.log("friends["+i+"] is:");
             console.log(friends[i]);
         }
+        fs.writeFile(path.join(appPath, '/data','friends.js'),JSON.stringify(friends), function(err){
+            if (err) {
+                return console.log(err);
+            }
+            console.log("wrote to file!");
+        });
         return true;
     });
 
