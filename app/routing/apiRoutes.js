@@ -37,11 +37,38 @@ module.exports = function(app){
             }
             console.log("wrote to file!");
         });
+
+        findMatch(friends[friends.length-1]);
         return true;
     });
 
     app.get("/api/friends",function(req,res){
         return res.json(friends);
     });
+
+    function findMatch(you){
+        if(friends.length===1){
+            console.log("Only 1 person in the database - add another friend!");
+        }
+        var bestFriend=0;
+        var lowestDiff=100;
+        if(friends.length>2){
+            for(var i=0;i<friends.length-1;i++){
+                var diff=0;
+                for(var j=0;j<friends[i].answers.length;j++){
+                    diff+=Math.abs(you.answers[j]-friends[i].answers[j]);
+                }
+                if(diff<lowestDiff){
+                    lowestDiff=diff;
+                    bestFriend=i;
+                }
+                console.log("Friend: "+friends[i].name);
+                console.log("Difference is: "+diff);
+            }
+            console.log("Best friend index is: "+bestFriend);
+            console.log("best friend is: "+friends[bestFriend].name);
+        }
+
+    }
 
 }
