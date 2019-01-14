@@ -66,12 +66,8 @@ module.exports = function(app){
                 //console.log("Difference is: "+diff);
             }
         }
-        displayBestFriend(bestFriend,res);
-    }
 
-    function displayBestFriend(bestFriend,res){
-        //console.log("Best friend index is: "+bestFriend);
-        //console.log("best friend is: "+friends[bestFriend].name);
         return res.json(friends[bestFriend]);
     }
+
 }
