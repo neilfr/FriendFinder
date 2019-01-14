@@ -38,15 +38,15 @@ module.exports = function(app){
             console.log("wrote to file!");
         });
 
-        findMatch(friends[friends.length-1]);
-        return true;
+        findMatch(friends[friends.length-1], res);
+        //return true;
     });
 
     app.get("/api/friends",function(req,res){
         return res.json(friends);
     });
 
-    function findMatch(you){
+    function findMatch(you, res){
         if(friends.length===1){
             console.log("Only 1 person in the database - add another friend!");
         }
@@ -66,12 +66,14 @@ module.exports = function(app){
                 console.log("Difference is: "+diff);
             }
         }
-        displayBestFriend(bestFriend);
+        displayBestFriend(bestFriend,res);
     }
 
-    function displayBestFriend(bestFriend){
+    function displayBestFriend(bestFriend,res){
         console.log("Best friend index is: "+bestFriend);
         console.log("best friend is: "+friends[bestFriend].name);
+        return res.json(friends[bestFriend]);
+        //$(".modal-body").html(friends[bestFriend].name);
       //  alert("Best Friend is: "+friends[bestFriend].name);
     //    alert("hello");
     }

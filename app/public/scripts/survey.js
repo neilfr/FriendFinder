@@ -54,7 +54,18 @@ $("#submitBtn").on("click",function(){
         "name":name,
         "answers":answerList
     }
-    $.post("/api/friends",data,function(){
-        console.log("submitted!"); // this never gets logged?
+    $.post("/api/friends",data,function(res){
+        console.log("submitted!"); 
+        console.log('the response is: ');
+        console.log(res);
+        alert("submitted!");
+        alert(JSON.stringify(res));
+        $(".modal-body").html(res.name);
     });
 });
+
+/*  How do i reload/clear the page after closing the modal window.  This didn't work.
+$("#modalCloseBtn").on("click",function(){
+    location.reload();
+}
+*/
