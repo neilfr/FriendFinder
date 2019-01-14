@@ -1,17 +1,56 @@
 body{
     font-family:arial;
     font-size: 1em;
+    padding:2%;
 }
 
 h1{
-    color:blue;
+    color:black;
     font-size: 3em;
+    margin-bottom:10px;
+}
+
+h2{
+    width:100%;
+}
+
+#name{
+    width:200px;
+}
+
+#formContainer{
+    background-color:lightgray;
+    border:gray 1px solid;
+    border-radius:5px;
+    padding:15px 2%;
+}
+
+.surveyQuestionContainer{
+    background-color:darkgray;
+    margin:10px;
+    display:flex;
+    border-radius:5px;
+}
+
+
+#surveyContainer{
+    border-top:gray 1px solid;
+    margin-top:10px;
 }
 
 .surveyQuestion{
     font-size: 1.5em;
-    color:red;
+    color:black;
+    width: 20%;
+    margin-left: 5px;
 }
+
+.surveyAnswerOptions{
+   display:inline;
+   margin:5px;
+}
+
+
 
 .modal{
     display: none;

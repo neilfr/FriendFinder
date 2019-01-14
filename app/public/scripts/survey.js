@@ -1,14 +1,14 @@
 var questions = [
-    "You love chicken",
-    "You love pork",
-    "You love beef",
-    "You love fish",
-    "You love lamb",
-    "You love turkey",
-    "You love bison",
-    "You love ostrich",
-    "You love goat",
-    "You love venison"
+    "I really love chicken!",
+    "I really love pork!",
+    "I really love beef!",
+    "I really love fish!",
+    "I really love lamb!",
+    "I really love turkey!",
+    "I really love bison!",
+    "I really love ostrich!",
+    "I really love goat!",
+    "I really love venison!"
 ];
 
 var surveyAnswerOptions = 
@@ -20,10 +20,13 @@ var surveyAnswerOptions =
 
 var html="";
 for (var i=0;i<questions.length;i++){
+    var surveyQuestionContainerDiv=$("<div>");
+    $(surveyQuestionContainerDiv).addClass("surveyQuestionContainer");
+
     var surveyQuestionDiv=$("<div>");
     $(surveyQuestionDiv).html(questions[i]);
     $(surveyQuestionDiv).addClass("surveyQuestion");
-    $('#surveyContainer').append(surveyQuestionDiv);
+    $(surveyQuestionContainerDiv).append(surveyQuestionDiv);
 
     var surveyAnswerOptionsDiv=$('<div>');
     html= "<select id='q"+i+"' name='q"+i+"'>"
@@ -31,7 +34,9 @@ for (var i=0;i<questions.length;i++){
     "</select>";
     $(surveyAnswerOptionsDiv).addClass("surveyAnswerOptions")
     $(surveyAnswerOptionsDiv).html(html);
-    $('#surveyContainer').append(surveyAnswerOptionsDiv);
+    $(surveyQuestionContainerDiv).append(surveyAnswerOptionsDiv);
+
+    $('#surveyContainer').append(surveyQuestionContainerDiv);
 }
 
 $("#submitBtn").on("click",function(){
