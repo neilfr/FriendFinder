@@ -72,5 +72,7 @@ module.exports = function(app){
     function displayBestFriend(bestFriend){
         console.log("Best friend index is: "+bestFriend);
         console.log("best friend is: "+friends[bestFriend].name);
+      //  alert("Best Friend is: "+friends[bestFriend].name);
+    //    alert("hello");
     }
 }

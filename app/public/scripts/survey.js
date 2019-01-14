@@ -1,12 +1,18 @@
 var questions = [
-    "you love chicken?",
-    "you love pork?",
-    "you love beef?",
-    "you love scuba?"
+    "You love chicken",
+    "You love pork",
+    "You love beef",
+    "You love fish",
+    "You love lamb",
+    "You love turkey",
+    "You love bison",
+    "You love ostrich",
+    "You love goat",
+    "You love venison"
 ];
 
 var surveyAnswerOptions = 
-    "<option value = '1'>1 - Strongly Agree</option>"+
+    "<option value = '1'>1 - Strongly Disagree</option>"+
     "<option value = '2'>2</option>"+
     "<option value = '3'>3</option>"+
     "<option value = '4'>4</option>"+
