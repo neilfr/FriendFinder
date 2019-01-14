@@ -44,10 +44,10 @@ $("#submitBtn").on("click",function(){
     var answerList=[];
     for(var i=0;i<questions.length;i++){
         var questionNumber="#q"+i;
-        console.log(questionNumber);
+        //console.log(questionNumber);
         var answer=$(questionNumber).val().trim();
         answerList.push(answer);
-        console.log(answer);
+        //console.log(answer);
     }
     console.log(answerList);
     var data = {
@@ -55,11 +55,9 @@ $("#submitBtn").on("click",function(){
         "answers":answerList
     }
     $.post("/api/friends",data,function(res){
-        console.log("submitted!"); 
-        console.log('the response is: ');
-        console.log(res);
-        alert("submitted!");
-        alert(JSON.stringify(res));
+        //console.log("submitted!"); 
+        //console.log('the response is: ');
+        //console.log(res);
         $(".modal-body").html(res.name);
     });
 });

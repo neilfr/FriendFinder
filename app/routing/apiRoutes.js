@@ -14,32 +14,32 @@ fs.readFile(path.join(appPath, '/data','friends.js'), "utf8", function(error, da
         friends = JSON.parse(data);
     }
     // We will then re-display the content as an array for later use.
-    console.log("resulting array from file");
-    console.log(friends);
+    //console.log("resulting array from file");
+    //console.log(friends);
   });
 
 module.exports = function(app){
     // Sets up the Express app to handle data parsing
     // When I move these lines to server.js... req.body becomes undefined... why??
+    // FOR SOME REASON EVERYTHING BREAKS IF I MOVE THIS TO SERVER.JS
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
 
     app.post("/api/friends", function(req,res){
-        console.log("POST!");
+        //console.log("POST!");
         friends.push(req.body);
-        for(var i=0;i<friends.length;i++){
+        /*for(var i=0;i<friends.length;i++){
             console.log("friends["+i+"] is:");
             console.log(friends[i]);
         }
+        */
         fs.writeFile(path.join(appPath, '/data','friends.js'),JSON.stringify(friends), function(err){
             if (err) {
                 return console.log(err);
             }
-            console.log("wrote to file!");
+            //console.log("wrote to file!");
         });
-
         findMatch(friends[friends.length-1], res);
-        //return true;
     });
 
     app.get("/api/friends",function(req,res){
@@ -62,19 +62,16 @@ module.exports = function(app){
                     lowestDiff=diff;
                     bestFriend=i;
                 }
-                console.log("Friend: "+friends[i].name);
-                console.log("Difference is: "+diff);
+                //console.log("Friend: "+friends[i].name);
+                //console.log("Difference is: "+diff);
             }
         }
         displayBestFriend(bestFriend,res);
     }
 
     function displayBestFriend(bestFriend,res){
-        console.log("Best friend index is: "+bestFriend);
-        console.log("best friend is: "+friends[bestFriend].name);
+        //console.log("Best friend index is: "+bestFriend);
+        //console.log("best friend is: "+friends[bestFriend].name);
         return res.json(friends[bestFriend]);
-        //$(".modal-body").html(friends[bestFriend].name);
-      //  alert("Best Friend is: "+friends[bestFriend].name);
-    //    alert("hello");
     }
 }
